@@ -151,15 +151,15 @@ var Deck = (function () {
     return document.createElement(type);
   }
 
-  var maxZ = 52;
+  var maxZ = 36;
 
   function _card(i) {
     var transform = prefix('transform');
 
     // calculate rank/suit, etc..
-    var rank = i % 13 + 1;
-    var suit = i / 13 | 0;
-    var z = (52 - i) / 4;
+    var rank = i % 9 + 1;
+    var suit = i / 9 | 0;
+    var z = (36 - i) / 4;
 
     // create elements
     var $el = createElement('div');
@@ -396,7 +396,7 @@ var Deck = (function () {
 
   function SuitName(suit) {
     // return suit name from suit value
-    return suit === 0 ? 'spades' : suit === 1 ? 'hearts' : suit === 2 ? 'clubs' : suit === 3 ? 'diamonds' : 'joker';
+    return suit === 0 ? 'spades' : suit === 1 ? 'hearts' : suit === 2 ? 'clubs' : suit === 3 ? 'diamonds' : suit === 4 ;
   }
 
   function addListener(target, name, listener) {
@@ -757,8 +757,8 @@ var Deck = (function () {
           delay: 300 + delay,
           duration: 300,
 
-          x: Math.cos(deg2rad(rot - 90)) * 55 * _fontSize / 16,
-          y: Math.sin(deg2rad(rot - 90)) * 55 * _fontSize / 16,
+          x: Math.cos(deg2rad(rot - 90)) * 36 * _fontSize / 16,
+          y: Math.sin(deg2rad(rot - 90)) * 36 * _fontSize / 16,
           rot: rot,
 
           onStart: function onStart() {
@@ -921,9 +921,9 @@ var Deck = (function () {
     }
   }
 
-  function Deck(jokers) {
+  function Deck() {
     // init cards array
-    var cards = new Array(jokers ? 55 : 52);
+    var cards = new Array(36);
 
     var $el = createElement('div');
     var self = observable({ mount: mount, unmount: unmount, cards: cards, $el: $el });
@@ -946,7 +946,7 @@ var Deck = (function () {
     var card;
 
     // create cards
-    for (var i = cards.length; i; i--) {
+    for (var i = 36; i; i--) {
       card = cards[i - 1] = _card(i - 1);
       card.setSide('back');
       card.mount($el);

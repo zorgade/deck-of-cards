@@ -59,7 +59,7 @@ deck.cards.forEach(function (card, i) {
           startWinning()
         }, 250)
       }
-    } else if (i % 13 === 12) {
+    } else if (i % 9 === 8) {
       if (!kingsClicked) {
         return
       }
@@ -68,7 +68,7 @@ deck.cards.forEach(function (card, i) {
         return king
       }).length === 4) {
         for (var j = 0; j < 3; j++) {
-          card = Deck.Card(52 + j)
+          card = Deck.Card(32 + j)
           card.mount(deck.$el)
           card.$el.style[transform] = 'scale(0)'
           card.setSide('front')
@@ -98,7 +98,7 @@ function startWinning () {
 
   var side = Math.floor(Math.random() * 2) ? 'front' : 'back'
 
-  for (var i = 0; i < 55; i++) {
+  for (var i = 0; i < 32; i++) {
     addWinningCard($winningDeck, i, side)
   }
 
@@ -106,8 +106,8 @@ function startWinning () {
 }
 
 function addWinningCard ($deck, i, side) {
-  var card = Deck.Card(54 - i)
-  var delay = (55 - i) * 20
+  var card = Deck.Card(32 - i)
+  var delay = (32 - i) * 10
   var animationFrames = Deck.animationFrames
   var ease = Deck.ease
 

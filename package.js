@@ -21,16 +21,11 @@ Package.onUse(function(api) {
   // Add card faces and backs
   api.addAssets('css/faces/back.png', 'client');
 
-  // 52 deck cards
+  // 36 deck cards
   for( var i = 0; i < 4; i++ ) {
-    for( var j = 1; j <= 13; j++ ) {
+    for( var j = 1; j <= 9; j++ ) {
       api.addAssets('css/faces/' + i + '_' + j + '.svg', 'client');
     }
-  }
-
-  // 3 jokers
-  for( var k = 1; k <= 3; k++ ) {
-    api.addAssets('css/faces/4_' + k + '.svg', 'client');
   }
 
   api.export(['Deck'], ['client']);
